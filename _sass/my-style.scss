@@ -1,0 +1,44 @@
+.dl-table {
+	a {
+		@supports (
+			(text-decoration-thickness: initial) and
+				(text-underline-offset: initial)
+		) {
+			text-underline-offset: 0.8rem;
+		}
+		@supports not (
+			(text-decoration-thickness: initial) and
+				(text-underline-offset: initial)
+		) {
+			padding-bottom: 0.45rem;
+		}
+	}
+
+	.btn,
+	.gumroad-button {
+		margin: 1rem 0;
+	}
+}
+
+.avatar {
+	object-fit: cover;
+	object-position: top;
+}
+
+.layout-resume {
+	.fr {
+		margin-left: 0;
+	}
+	.avatar {
+		width: 112px;
+		height: 112px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: top;
+	}
+}
+
+// .lead.aspect-ratio.sixteen-nine {
+//   border: 1px solid var(--border-color);
+//   transition: border-color 500ms ease;
+// }

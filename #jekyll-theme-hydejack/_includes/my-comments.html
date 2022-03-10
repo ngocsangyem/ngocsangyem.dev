@@ -1,0 +1,62 @@
+{% assign disqus = site.disqus | default:site.disqus_shortname %}
+{% if disqus %}
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script>!function(w, d) {
+  if (d.getElementById("disqus_thread")) {
+    if (w.DISQUS) {
+      w.DISQUS.reset({
+        reload: true,
+        config() {
+          this.page.url = w.location.href;
+          this.page.title = d.title;
+        },
+      });
+    } else {
+      w.disqus_config = function disqusConfig() {
+        this.page.url = w.location.href;
+        this.page.title = d.title;
+      };
+      w.loadJSDeferred(d.getElementById("_hrefDisqus").href + '/embed.js');
+    }
+  }
+}(window, document);</script>
+{% endif %}
+
+{% assign giscus = site.giscus %}
+{% if giscus %}
+  <div id="giscus">
+    <div></div>
+  </div>
+
+  <script>
+    function toggle_giscus() {
+      const c = document.body.classList;
+      const dark = c.contains("dark-mode") || "_sunset" in window && !c.contains("light-mode") && matchMedia("(prefers-color-scheme: dark)").matches;
+      
+      const theme = dark ? "{{ giscus.dark-theme }}" : "{{ giscus.light-theme }}";
+      const scriptEl = document.createElement("script");
+      scriptEl.src = "https://giscus.app/client.js";
+      scriptEl.setAttribute("data-repo", "{{ giscus.repo }}");
+      scriptEl.setAttribute("data-repo-id", "{{ giscus.repo-id }}");
+      scriptEl.setAttribute("data-category", "{{ giscus.category }}");
+      scriptEl.setAttribute("data-category-id", "{{ giscus.category-id }}");
+      scriptEl.setAttribute("data-mapping", "{{ giscus.mapping }}");
+      scriptEl.setAttribute("data-reactions-enabled", "{{ giscus.reactions-enabled }}");
+      scriptEl.setAttribute("data-emit-metadata", "{{ giscus.repo }}");
+      scriptEl.setAttribute("data-lang", "{{ site.lang }}");
+      scriptEl.setAttribute("data-input-position", "{{ giscus.input-position }}");
+      scriptEl.setAttribute("data-theme", theme);
+      scriptEl.setAttribute("crossorigin", "{{ giscus.crossorigin }}");
+      
+      const container = document.getElementById("giscus");
+      const old = container.firstElementChild;
+      container.removeChild(old);
+      container.appendChild(scriptEl);
+    }
+
+    document.addEventListener("hydejack-dark-mode-toggle", function() { toggle_giscus(); });
+    toggle_giscus();
+    
+  </script>
+{% endif %}

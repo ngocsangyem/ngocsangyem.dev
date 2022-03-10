@@ -1,0 +1,144 @@
+# If you have a `resume.json` file, copy it into `_data` and delete this file.
+# If you don't have a JSON Resume you can just edit this YAML file instead.
+# See also: <https://jsonresume.org/>.
+basics:
+  name: "Sang Nguyen"
+  label: "Frontend Developer"
+  picture: "/assets/img/author/me/sang.nguyenngoc_w_512.jpg"
+  email: "nnsang24@gmail.com"
+  phone: "(+84) 589483850"
+  website: "https://www.ngocsangyem.dev/"
+  summary: >
+    Sang Nguyen from Viet Nam.
+    Highly motivated and skilled frontend developer with a good knowledge of HTML, CSS, and Javascript. Programming knowledge enhanced by constant research and professional development. Ability to work well under stress and with short deadlines. Always take user-centered to design solutions in both the digital and the physical world. Enjoys being part of a productive team, equally comfortable working on own initiative.
+  location:
+    address: ""
+    postalCode: ""
+    city: "Ho Chi Minh"
+    countryCode: "VN"
+    region: ""
+  profiles:
+    - network: "Twitter"
+      username: "ngocsangyem"
+      url: "https://twitter.com/ngocsangyem"
+    - network: "LinkedIn"
+      username: "ngocsangyem"
+      url: "https://www.linkedin.com/in/ngocsangyem"
+work:
+  - company: "Gforces"
+    position: "Frontend Developer"
+    website: "https://www.gforces.co.uk/"
+    startDate: "2017-11-01"
+    endDate: ""
+    summary: >
+      Gforces is a company that delivers class-leading automotive e-commerce solutions and intelligent digital infrastructures globally.
+    highlights:
+      - "Developing applications, monitoring their performance, and maintaining them in production by Vuejs and Reactjs."
+      - "Building stable and maintainable codebases using Vue 3 and Typescript."
+      - "Contributing to improvements to the software development process."
+      - "Working in agile/scrum team and attending all the ceremonies and providing input on team."
+      - "Documented software and technical specifications."
+      - "Working on multiple projects simultaneously to a high standard."
+      - "Addressing cross-browser compatibility issues."
+  - company: "Kyanon Digital"
+    position: "Frontend Developer"
+    website: "https://kyanon.digital/"
+    startDate: "2018-09-01"
+    endDate: "2019-10-01"
+    summary: >
+      I collaborated with other teams and clients to analyze, research, and develop new features for many projects with different styles and techniques.
+    highlights:
+      - "Using Angular to develop a travel site with a variety of features on a stable and maintainable codebase."
+      - "Optimizing and improving page load for my main client's website."
+      - "Creating modular, responsive templates using modern CSS and Javascript techniques."
+      - "Implementing a mobile-first approach to an existing website."
+      - "Ensuring proper documentation and reports in all stages of product life cycles."
+      - "Consulting with client professionals during the development of a new website to ensure accessibility."
+      - "Performed maintenance and updates to existing client Web sites."
+  - company: "Cánh Cam"
+    position: "Frontend Developer"
+    website: "https://www.canhcam.vn/"
+    startDate: "2017-12-01"
+    endDate: "2018-06-01"
+    summary: >
+      Internship Frontend developer.
+    highlights:
+      - "Creating modular, responsive templates using modern CSS techniques and Javascript libraries."
+      - "Leveraging responsive web frameworks to complete deliverables ahead of schedule."
+      - "Developing code to convert design wireframes into website elements under supervision."
+      - "Improving website performance and user experience."
+      - "Ensuring smooth implementation of content that was cross-platform/browser compatible, and responsive in mobile devices."
+      - "Utilizing industry knowledge and how it relates to customer needs to overcome customer concerns."
+# volunteer:
+#   - organization: "CoderDojo"
+#     position: "Teacher"
+#     website: "https://coderdojo.com/"
+#     startDate: "2012-01-01"
+#     endDate: "2013-01-01"
+#     summary: "Global movement of free coding clubs for young people."
+#     highlights:
+#       - "Awarded 'Teacher of the Month'"
+education:
+  - institution: "Udemy"
+    area: ""
+    studyType: "Frontend Developer"
+    startDate: "2017-04-01"
+    endDate: ""
+    # gpa: "4.0"
+    courses:
+      - "JavaScript - The Complete Guide"
+      - "CSS - The Complete Guide"
+      - "Angular - The Complete Guide"
+      - "React - The Complete Guide (incl Hooks, React Router, Redux)"
+  - institution: "Frontend Master"
+    area: ""
+    studyType: "Frontend Developer"
+    startDate: "2018-06-01"
+    endDate: ""
+    # gpa: "4.0"
+    courses:
+      - "JavaScript: The New Hard Parts"
+      - "JavaScript: The Hard Parts, v2"
+      - "Asynchronous Programming in JavaScript (with Rx.js Observables)"
+# awards:
+#   - title: "Digital Compression Pioneer Award"
+#     date: "2014-11-01"
+#     awarder: "Techcrunch"
+#     summary: "There is no spoon."
+# publications:
+#   - name: "Video compression for 3d media"
+#     publisher: "Hooli"
+#     releaseDate: "2014-10-01"
+#     website: "https://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)"
+#     summary: "Innovative middle-out compression algorithm that changes the way we store data."
+skills:
+  - name: "Web Development"
+    # level: "Master"
+    keywords:
+      - "Vuejs"
+      - "Reactjs"
+      - "HTML"
+      - "CSS"
+      - "Javascript"
+      - "Typescript"
+      - "Git"
+      - "Gulp"
+      - "Webpack"
+  # - name: "Compression"
+  #   level: "Master"
+  #   keywords:
+  #     - "Mpeg"
+  #     - "MP4"
+  #     - "GIF"
+languages:
+  - language: "English"
+    fluency: "Reading, Listening, and Speaking"
+interests:
+  - name: "Sport"
+    keywords:
+      - "Football"
+      - "Chest"
+# references:
+#   - name: "Sang Nguyen"
+#     reference: >
+#       I used to think design & coding was a passion, then one day I suddenly realized it was this life….
