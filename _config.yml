@@ -199,9 +199,9 @@ kramdown:
 
 giscus:
   repo: "ngocsangyem/ngocsangyem.dev"
-  repo-id: "MDEwOlJlcG9zaXRvcnkzOTIyMTQ2MjA="
+  repo-id: "R_kgDOG-nUKg="
   category: "Q&A"
-  category-id: "DIC_kwDOF2C4XM4CN_H7"
+  category-id: "DIC_kwDOG-nUKs4CODe9"
   mapping: "pathname"
   reactions-enabled: "1" 
   emit-metadata: "0"

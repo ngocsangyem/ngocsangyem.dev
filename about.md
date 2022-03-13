@@ -10,8 +10,8 @@ order: 1
 ## Hello, World
 
 Hi, I'm Sang.<br/>
-I am Frontend Developer at [GForces]. After completing the study program at [FPT Polytechnic], I worked as an intern at an Agency company. I left intern work to start to work as a real Frontend Developer at a company based in Singapore.<br/>
-I am passionate about helping teams improve the quality of their software, and do it more efficiently and securely. I regularly blog at [https://www.ngocsangyem.dev] and can be found on Twitter at [@ngocsangyem] and on [github.com/ngocsangyem].<br/>
+I am a Frontend Developer at [GForces]. After completing the study of program at [FPT Polytechnic], I worked as an intern at an Agency company. I left the internship work to start working as a real Frontend Developer at a company based in Singapore.<br/>
+I am passionate about teamwork to help improve the quality of work and software by making it more efficiently and securely. I regularly blog at [https://www.ngocsangyem.dev] and can be found on Twitter at [@ngocsangyem] and on [github.com/ngocsangyem].<br/>
 Please check my [resume] if you wish to know more about me.
 
 ## Start today not tomorrow
