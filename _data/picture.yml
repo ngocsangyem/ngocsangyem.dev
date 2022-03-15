@@ -1,10 +1,11 @@
-media_queries:
-  mobile: 'max-width: 600px'
-
 presets:
   default:
-    widths: [600, 900, 1200]
     formats: [webp, original]
-    sizes:
-      mobile: 80vw
-    size: 500px
+    widths: [200, 400, 800, 1600]
+    link_source: true
+
+  lazy:
+    markup: data_auto
+    widths: [200, 400, 800, 1600]
+    link_source: true
+    noscript: true

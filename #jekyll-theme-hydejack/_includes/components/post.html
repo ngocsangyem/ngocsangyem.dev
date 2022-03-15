@@ -50,10 +50,14 @@
     </div>
 
     {% assign alt = false %}
-    {% unless hide_image %}{% if post.image %}
+    {% unless hide_image %}{% if post.image or post.img %}
       {% unless no_link_title %}<a href="{{ post.url | relative_url }}" class="no-hover no-print-link {% unless post.hide_image %}flip-project{% endunless %}" tabindex="-1">{% endunless %}
-        <div class="img-wrapper lead aspect-ratio sixteen-nine flip-project-img">
-          {% include_cached components/hy-img.html img=post.image alt=post.title width=864 height=486 %}
+        <div class="img-wrapper lead aspect-ratio flip-project-img">
+          {% responsive_image_block %}
+            path: {{post.img}}
+            alt: {{post.title}}
+            title: {{post.title}}
+          {% endresponsive_image_block %}
         </div>
       {% unless no_link_title %}</a>{% endunless %}
       {% assign alt = '' %}

@@ -1,0 +1,18 @@
+{% capture srcset %}
+{% for i in resized %}
+    /{{ i.path }} {{ i.width }}w,
+{% endfor %}
+{% endcapture %}
+
+{% assign smallest = resized | sort: 'width' | first %}
+{% assign largest = resized | sort: 'width' | last %}
+
+<figure class="image-figure">
+	<picture>
+		{% for i in resized %}
+			<source media="(min-width: {{ i.width }}px)" data-srcset="/{{ i.path }}" data-sizes="auto">
+		{% endfor %}
+		<img width="100%" data-src="/{{ path }}" data-sizes="auto" alt="{{ alt }}" class="blur-up lazyautosizes lazyload">
+	</picture>
+	<div style="padding-top: {{original.height | times:100 | divided_by:original.width}}%"></div>
+</figure>

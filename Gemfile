@@ -45,7 +45,8 @@ group :jekyll_plugins do
   gem "jekyll-titles-from-headings"
   gem "jekyll-include-cache"
   gem "jekyll-avatar"
-
+  gem 'jekyll_picture_tag', '~> 2.0'
+  gem "jekyll-responsive-image"
   # Non-Github Pages plugins:
   gem "jekyll-last-modified-at"
   gem "jekyll-compose"

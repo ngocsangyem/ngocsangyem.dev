@@ -210,6 +210,20 @@ giscus:
   crossorigin: "anonymous"
   input-position: "bottom"
 
+responsive_image:
+  template: ./#jekyll-theme-hydejack/_includes/components/responsive-image.html
+  default_quality: 85
+  sizes:
+    - width: 320
+      quality: 80
+    - width: 481
+    - width: 769
+    - width: 1025
+    - width: 1201
+    - width: 1400
+      quality: 90
+  base_path: assets/img
+
 
 # Hydejack Settings
 # ----------------------------------------------------------------------------------------
@@ -315,7 +329,6 @@ hydejack:
     precache_assets:
       - /assets/img/swipe.svg
 
-
 # Collections
 # ----------------------------------------------------------------------------------------
 
@@ -367,6 +380,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-last-modified-at
   - jekyll-avatar
+  - jekyll-responsive-image
 
 
 

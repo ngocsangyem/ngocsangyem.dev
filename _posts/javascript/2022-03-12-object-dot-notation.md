@@ -3,11 +3,7 @@ layout: post
 title: "Object dot notation"
 description: >
   "Property accessors provide access to an object's properties by using the dot notation or the bracket notation." - MDN
-image: 
-  path: /assets/img/blog/javascript/object-dot-notation_w_200.webp
-  srcset:
-    200w: /assets/img/blog/javascript/object-dot-notation_w_200.webp
-    1280w: /assets/img/blog/javascript/object-dot-notation_w_1280.webp
+img: assets/img/blog/javascript/object-dot-notation_w_1280.webp
 sitemap: true
 category: javascript
 tags:

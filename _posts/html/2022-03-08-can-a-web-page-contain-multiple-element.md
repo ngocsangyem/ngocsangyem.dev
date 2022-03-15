@@ -3,16 +3,7 @@ layout: post
 title: "Can a web page contain multiple header elements? What about footer elements?"
 description: >
   W3 recommends having as many as you want, but only 1 of each for each "section" of your page, i.e. body, section etc.
-image: 
-  path: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1400.jpg
-  srcset:
-    1400w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1400.jpg
-    1290w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1290.jpg
-    1104w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1104.jpg
-    905w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_905.jpg
-    570w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_570.jpg
-    406w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_406.jpg
-    200w: /assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_200.jpg
+img: assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1400.jpg
 sitemap: true
 category: html
 tags:
