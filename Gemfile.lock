@@ -82,7 +82,7 @@ GEM
       ruby-vips (~> 2.0.17)
     katex (0.8.0)
       execjs (~> 2.7)
-    kramdown (2.3.2)
+    kramdown (2.4.0)
       rexml
     kramdown-math-katex (1.0.1)
       katex (~> 0.4)
@@ -101,7 +101,7 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     posix-spawn (0.3.15)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     rainbow (3.1.1)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
