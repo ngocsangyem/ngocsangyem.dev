@@ -42,3 +42,12 @@
 //   border: 1px solid var(--border-color);
 //   transition: border-color 500ms ease;
 // }
+.post {
+	.image-figure {
+		margin-bottom: 1rem;
+		img {
+			margin-bottom: 0;
+			border-radius: 0.5rem;
+		}
+	}
+}
