@@ -35,7 +35,7 @@ keywords:              ["Frontend", "HTML", "Javascript", "Life style", "CSS"]
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
 # It also used by the `jekyll-seo-tag` plugin.
-logo:                  /assets/img/author/me/sang.nguyenngoc_w_512.jpg
+logo:                  /assets/img/author/me/sang.nguyenngoc_w_506.webp
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
@@ -43,14 +43,14 @@ author:
   name:                Sang Nguyen
   email:               nnsang24@gmail.com
   picture:
-    path: /assets/img/author/me/sang.nguyenngoc_w_512.jpg
+    path: /assets/img/author/me/sang.nguyenngoc_w_506.webp
     srcset:
-      0.5x: /assets/img/author/me/sang.nguyenngoc_w_200.jpg
-      1x: /assets/img/author/me/sang.nguyenngoc_w_512.jpg
-      2x: /assets/img/author/me/sang.nguyenngoc_w_743.jpg
-      3x: /assets/img/author/me/sang.nguyenngoc_w_912.jpg
-      3.5x: /assets/img/author/me/sang.nguyenngoc_w_1056.jpg
-      4x: /assets/img/author/me/sang.nguyenngoc_w_1400.jpg
+      0.5x: /assets/img/author/me/sang.nguyenngoc_w_200.webp
+      1x: /assets/img/author/me/sang.nguyenngoc_w_506.webp
+      2x: /assets/img/author/me/sang.nguyenngoc_w_806.webp
+      3x: /assets/img/author/me/sang.nguyenngoc_w_956.webp
+      3.5x: /assets/img/author/me/sang.nguyenngoc_w_1084.webp
+      4x: /assets/img/author/me/sang.nguyenngoc_w_1400.webp
   # # Used by `jekyll-seo-tag`:
   social:
     twitter: ngocsangyem
