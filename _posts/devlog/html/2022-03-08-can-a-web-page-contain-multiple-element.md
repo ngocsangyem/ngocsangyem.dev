@@ -3,7 +3,8 @@ layout: post
 title: "Can a web page contain multiple header elements? What about footer elements?"
 description: >
   W3 recommends having as many as you want, but only 1 of each for each "section" of your page, i.e. body, section etc.
-img: assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1400.jpg
+img:
+  path: assets/img/blog/html/can-a-web-page-contain-multiple-header-elements-what-about-footer-elements_w_1400.jpg
 sitemap: true
 category: devlog
 tags:
