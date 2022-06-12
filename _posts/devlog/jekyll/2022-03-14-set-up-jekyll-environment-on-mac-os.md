@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Set up Jekyll environment on macOS"
-category: logs
+category: devlog
 description: Set Ruby, Bundler and Jekyll on macOS Silicon
 tags: jekyll tips
 ---

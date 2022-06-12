@@ -1,10 +1,10 @@
 ---
 layout: list
 type: category
-title: Logs
-slug: logs
+title: Dev.Log
+slug: devlog
 sidebar: true
 order: 2
 description: >
-  Just a log of my life.
+  Anything about development
 ---

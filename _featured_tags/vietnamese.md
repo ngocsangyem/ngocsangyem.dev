@@ -1,11 +1,10 @@
 ---
 layout: tag-list
-title: Reactjs
-slug: reactjs
+title: Vietnamese
+slug: vietnamese
 category: devlog
 type: tag
 description: >
-  Post about React.
+  Post about Vietnamese.
 sidebar: false
 ---
-
