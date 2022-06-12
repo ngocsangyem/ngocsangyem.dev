@@ -202,7 +202,7 @@ kramdown:
 giscus:
   repo: "ngocsangyem/ngocsangyem.dev"
   repo-id: "R_kgDOG-nUKg="
-  category: "Comments"
+  category: "General"
   category-id: "DIC_kwDOG-nUKs4CODe9"
   mapping: "pathname"
   reactions-enabled: "1" 
