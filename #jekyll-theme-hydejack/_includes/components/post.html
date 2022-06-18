@@ -54,7 +54,7 @@
       {% unless no_link_title %}<a href="{{ post.url | relative_url }}" class="no-hover no-print-link {% unless post.hide_image %}flip-project{% endunless %}" tabindex="-1">{% endunless %}
         <div class="img-wrapper lead aspect-ratio flip-project-img">
           {% responsive_image_block %}
-            path: {{post.img.path}}
+            path: {{post.image.path}}
             alt: {{post.title}}
             title: {{post.title}}
           {% endresponsive_image_block %}

@@ -3,7 +3,7 @@ layout: post
 title: "How async/await really work"
 description: >
   "An async function is a function declared with the async keyword, and the await keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains." - MDN
-img:
+image:
   path: assets/img/blog/javascript/jun_2022/async_dog.webp
 sitemap: true
 category: devlog
