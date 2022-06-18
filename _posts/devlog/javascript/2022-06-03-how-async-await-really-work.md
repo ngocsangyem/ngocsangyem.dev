@@ -33,7 +33,7 @@ console.log('Log me second');
 
 Let's explain what's happening here.
 
-* In line 1, we declare a function called `getTodo` that returns a promise.
+* In line 1, we declare a function called `getTodo`.
 * Next, we invoke the `getTodo` and immediately create a new execution context. At this time, assume in 1ms, we are going to get the message `Log me first`.
 
 {% responsive_image path: assets/img/blog/javascript/jun_2022/async_step1.webp alt: 'async/await'%}
