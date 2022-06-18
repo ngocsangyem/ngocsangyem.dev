@@ -38,7 +38,7 @@ Let's explain what's happening here.
 
 {% responsive_image path: assets/img/blog/javascript/jun_2022/async_step1.webp alt: 'async/await'%}
 
-* In next line, we define a variable called `response`. For now, it is `undefined`.
+* In `getTodo` execution context, we define a variable called `response`. For now, it is `undefined`.
 
 {% responsive_image path: assets/img/blog/javascript/jun_2022/async_step2.webp alt: 'async/await'%}
 
