@@ -6,5 +6,5 @@ category: devlog
 type: tag
 description: >
   Post about Vue.
-sidebar: false
+sidebar: true
 ---
