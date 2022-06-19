@@ -15,17 +15,17 @@ image:
 
 ### Why?
 
-1. Use the options API
+##### Use the options API
 
 Not everything has an equivalent in the composition API, like `inheritAttrs`.
 
-2. Run setup code one time
+##### Run setup code one time
 
 Because `setup()` is run for *every* component, if you have code that should only be executed once you can't include it in `<script setup>`.
 
 You can put it inside of the regular `<script>` block though.
 
-3. Named exports
+##### Named exports
 
 Sometimes it's nice to be able to export multiple things from one file, but you can only do that with the regular `<script>` block.
 
