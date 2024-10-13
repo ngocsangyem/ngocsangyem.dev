@@ -12,10 +12,13 @@ const SEL_NAVBAR_BTN_BAR = '#_navbar > .content > .nav-btn-bar';
     const navbarEl = document.querySelector(SEL_NAVBAR_BTN_BAR);
     navbarEl?.insertBefore(darkMode, navbarEl.querySelector('.nav-span'));
 
-    const navbarBtn = document.getElementById('_dark-mode');
+    const metaEl = document.querySelector('meta[name="color-scheme"]');
+    let tId;
 
+    const navbarBtn = document.getElementById('_dark-mode');
     navbarBtn?.addEventListener('click', (e) => {
       e.preventDefault();
+      clearTimeout(tId);
       const list = document.body.classList;
       if (
         list.contains('dark-mode') ||
@@ -23,10 +26,18 @@ const SEL_NAVBAR_BTN_BAR = '#_navbar > .content > .nav-btn-bar';
       ) {
         list.remove('dark-mode');
         list.add('light-mode');
+        tId = setTimeout(() => {
+          if (metaEl) metaEl.content = 'light';
+          document.documentElement.style.colorScheme = 'light';
+        }, 250);
         navbarBtn.dispatchEvent(new CustomEvent('hydejack-dark-mode-toggle', { detail: false, bubbles: true }));
       } else {
         list.remove('light-mode');
         list.add('dark-mode');
+        tId = setTimeout(() => {
+          if (metaEl) metaEl.content = 'dark';
+          document.documentElement.style.colorScheme = 'dark';
+        }, 250);
         navbarBtn.dispatchEvent(new CustomEvent('hydejack-dark-mode-toggle', { detail: true, bubbles: true }));
       }
     });

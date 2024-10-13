@@ -44,7 +44,7 @@ hy-drawer {
     // >>>
 
     // <<< link
-    --hy-drawer-peek-width: #{$sidebar-width};
+    & { --hy-drawer-peek-width: #{$sidebar-width}; }
     // >>>
   }
 
@@ -150,7 +150,8 @@ hy-drawer.loaded .sidebar {
 
 .sidebar-about {
   .avatar {
-    margin-bottom: 1.5rem
+    margin-bottom: 1.5rem;
+    object-fit: cover;
   }
 
   > a.sidebar-title {

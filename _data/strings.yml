@@ -99,19 +99,6 @@ date_formats:
 # ---------------------------------------------------------------------------------------
 # If you don't own the PRO version of Hydejack, modifying these will have no effect.
 
-tinyletter:
-  title:               Commercial break
-  label:               Email
-  placeholder:         Enter your email address
-  button:              Subscribe
-  message:             |
-    Get notified of my latest posts.
-
-    <!--form-->
-
-    No 3rd party products, no spam. Emails handled by [Tinyletter](https://tinyletter.com/)
-    {:.faded}
-
 welcome:
   more_projects:       See <!--projects_title--> for more
   more_posts:          See <!--posts_title--> for more

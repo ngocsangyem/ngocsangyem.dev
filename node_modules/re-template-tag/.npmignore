@@ -1,2 +1,0 @@
-# cjs/ is ignored by .gitignore, but needs to be published to npm
-node_modules

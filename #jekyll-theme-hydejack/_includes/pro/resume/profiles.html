@@ -15,7 +15,7 @@
       </dt>
       <dd class="bold">
         {% capture link_class %}{% if forloop.first %}nickname p-nickname{% endif %}{% endcapture %}
-        {% include components/link.html href=pro.url class=link_class title=pro.username property="sameAs" rel="noopener noreferrer"%}
+        {% include components/link.html href=pro.url class=link_class title=pro.username property="sameAs" %}
       </dd>
     {% endfor %}
   </dl>

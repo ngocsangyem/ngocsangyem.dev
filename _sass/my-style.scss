@@ -1,77 +1,14 @@
 .dl-table {
-	a {
-		@supports (
-			(text-decoration-thickness: initial) and
-				(text-underline-offset: initial)
-		) {
-			text-underline-offset: 0.8rem;
-		}
-		@supports not (
-			(text-decoration-thickness: initial) and
-				(text-underline-offset: initial)
-		) {
-			padding-bottom: 0.45rem;
-		}
-	}
+  a {
+    @supports ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
+      text-underline-offset: .8rem;
+    }
+    @supports not ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
+      padding-bottom: .45rem;
+    }
+  }
 
-	.btn,
-	.gumroad-button {
-		margin: 1rem 0;
-	}
-}
-
-.avatar {
-	object-fit: cover;
-}
-
-.layout-resume {
-	.fr {
-		margin-left: 0;
-	}
-	.avatar {
-		width: 112px;
-		height: 112px;
-		border-radius: 50%;
-		object-fit: cover;
-		object-position: top;
-	}
-}
-
-// .lead.aspect-ratio.sixteen-nine {
-//   border: 1px solid var(--border-color);
-//   transition: border-color 500ms ease;
-// }
-.post {
-	.image-figure {
-		margin-bottom: 1rem;
-		img {
-			margin-bottom: 0;
-			border-radius: 0.5rem;
-		}
-	}
-}
-
-// Fancy Codeblock Scrollbar
-
-pre {
-	border-color: transparent;
-	transition: border-color 0.5s ease;
-
-	&::-webkit-scrollbar {
-		height: 8px;
-		width: auto;
-	}
-
-	&:hover {
-		border-color: var(--gray);
-		transition: border-color 0.2s ease;
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background-color: transparent;
-		border-color: inherit;
-		border-radius: 10px;
-		border-right-style: inset;
-		border-right-width: calc(100vw + 100vh);
-	}
+  .btn, .gumroad-button  {
+    margin: 1rem 0;
+  }
 }

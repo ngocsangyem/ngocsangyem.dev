@@ -9,6 +9,45 @@ sitemap: false
 * this list will be replaced by the toc
 {:toc .large-only}
 
+## v9.2.1
+Sep 14 2024
+{:.heading.post-date}
+
+* Fixed missing Dart Sass deprecation warning
+
+## v9.2.0
+Sep 08 2024
+{:.heading.post-date}
+
+* Added new social media icons
+* Added dark mode to free version
+* Changed default Twitter icon to "𝕏"
+* Disabled Google Fonts by default
+* Changed the default font weight for headings to 900 (you can undo this by setting `font_weight_heading: 700` in `_data/variables.yml`).
+* Fixed a bug that caused a scrollbar to appear on the copy button on code blocks
+* Fixed a bug that caused a glitch on the copy button during light/dark mode transition 
+* Fixed a bug that caused newlines to get lost when using the copy button
+
+## v9.1.9
+Sep 05 2024
+{:.heading.post-date}
+
+* Fixed Dart Sass deprecation warnings in a way that is compatible with the legacy GitHub Pages pipeline
+
+## v9.1.8
+Sep 04 2024
+{:.heading.post-date}
+
+* Reverted "Fixed deprecation warnings" which broke compatibility with the legacy GitHub Pages pipeline
+
+## v9.1.7
+Sep 04 2024
+{:.heading.post-date}
+
+* Fixed deprecation warnings
+* Updated Ruby dependencies
+* Fixed browser chrome (e.g. scrollbar) not matching dark mode
+
 ## v9.1.6
 Feb 07 2022
 {:.heading.post-date}

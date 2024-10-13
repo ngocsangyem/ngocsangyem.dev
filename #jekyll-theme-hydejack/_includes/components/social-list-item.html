@@ -30,6 +30,7 @@
   {% else %}
     {% assign url = username | prepend:prep | append:app %}
   {% endif %}
+
   <li>
     <a href="{{ url }}" title="{{ name }}" class="no-mark-external">
       <span class="{{ icon }}"></span>

@@ -10,9 +10,13 @@ order: 1
 ## Hello, World
 
 Hi, I'm Sang.<br/>
-I am a Frontend Developer at [GForces]. After completing the study of program at [FPT Polytechnic], I worked as an intern at an Agency company. I left the internship work to start working as a real Frontend Developer at a company based in Singapore.<br/>
-I am passionate about teamwork to help improve the quality of work and software by making it more efficiently and securely. I regularly blog at [https://www.ngocsangyem.dev] and can be found on Twitter at [@ngocsangyem] and on [github.com/ngocsangyem].<br/>
-Please check my [resume] if you wish to know more about me.
+A Frontend Developer at Aspire with 4+ years of experience in web development. My expertise lies in JavaScript and TypeScript, and I’m passionate about building efficient, high-performance web applications. My journey in programming began in high school, and over time, I've evolved my skills to create impactful digital experiences.
+
+At Aspire, I actively contribute to the source code and participate in code reviews with my colleagues. I believe that collaboration and knowledge sharing are crucial in maintaining high-quality software. By working together as a team, we can spot potential issues early, improve code efficiency, and ensure the security of our applications.
+
+This blog is where I’ll share insights from my experiences—whether it's about frontend development best practices, code reviews, or tips on effective teamwork. My goal is to provide value to both newcomers and experienced developers by exploring how to create better, more secure, and scalable applications through collaboration.
+
+
 
 ## Start today not tomorrow
 
@@ -31,6 +35,7 @@ Here is a list of things I said I'd do tomorrow:
 - Fix bugs
 - Write a blog post
 - Go to Gym
+- Run for 20km
 
 Many of those I pledged to start months ago. All with the same promise: Eh, I'll do that tomorrow.
 
@@ -46,8 +51,7 @@ But starting is necessary. It's crucial to making your mark and leaving a legacy
 
 <!-- Links -->
 [resume]: /resume/
-[GForces]: https://www.gforces.co.uk/
-[FPT Polytechnic]: https://caodang.fpt.edu.vn/
+[Aspire]: https://www.linkedin.com/company/aspireapp-global/mycompany/
 [https://www.ngocsangyem.dev]: https://www.ngocsangyem.dev
 [@ngocsangyem]: https://twitter.com/ngocsangyem
 [github.com/ngocsangyem]: https://github.com/ngocsangyem

@@ -19,7 +19,7 @@
 
 <link rel="preload" href="{{ '/assets/img/swipe.svg' | relative_url }}" as="image" id="_hrefSwipeSVG">
 
-<link rel="dns-prefetch" href="{{ '/assets/js/search-worker-9.1.6.js' | relative_url }}" as="worker" id="_hrefSearch">
+<link rel="dns-prefetch" href="{{ '/assets/js/search-worker-9.2.1.js' | relative_url }}" as="worker" id="_hrefSearch">
 {% if site.kramdown.math_engine == 'katex' %}
   {% capture katex_url %}{{ 'assets/bower_components/katex/dist/katex.min.css' | relative_url }}{% endcapture %}
   <link rel="dns-prefetch" href="{{ katex_url }}" id="_katexPreload">
@@ -30,6 +30,3 @@
 {% if disqus %}
 <link rel="dns-prefetch" href="https://{{ disqus }}.disqus.com" id="_hrefDisqus">
 {% endif %}
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="/assets/js/sidebar-folder.js"></script>

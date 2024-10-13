@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-hydejack"
-  spec.version       = "9.1.6"
+  spec.version       = "9.2.1"
   spec.authors       = ["Florian Klampfer"]
   spec.email         = ["mail@qwtel.com"]
 
@@ -14,8 +14,8 @@ Gem::Specification.new do |spec|
     "changelog_uri"     => "https://hydejack.com/changelog/",
     "documentation_uri" => "https://hydejack.com/docs/",
     "homepage_uri"      => "https://hydejack.com/",
-    "source_code_uri"   => "https://github.com/hydecorp/hydejack-dev/",
-    "github_repo"       => "ssh://github.com/hydecorp/hydejack-dev"
+    "source_code_uri"   => "https://github.com/hydecorp/hydejack-pro/",
+    "github_repo"       => "ssh://github.com/hydecorp/hydejack-pro"
   }
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|_layouts|_includes|_sass|_config.yml|README|LICENSE|NOTICE|CHANGELOG)}i) }

@@ -116,11 +116,13 @@ const toggleClass = (element, ...cls) => {
     const toc = main.querySelector('#markdown-toc');
     if (toc) toc.classList.add('toc-hide');
 
-    if ('clipboard' in navigator) {
+    if ('clipboard' in navigator && 'ClipboardItem' in window) {
       Array.from(main.querySelectorAll(CODE_BLOCK_SEL)).forEach((el) => {
         const container = el?.parentNode?.parentNode;
         const writeText = async () => {
-          await navigator.clipboard.writeText(el.innerText);
+          await navigator.clipboard.write([
+            new ClipboardItem({ 'text/plain': new Blob([el.textContent], { type: 'text/plain' }) }),
+          ]);
           toggleClass(copyBtn, 'copy-success');
         };
         const copyBtn = createElement(

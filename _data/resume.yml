@@ -6,24 +6,29 @@ basics:
   label: "Frontend Developer"
   picture: "/assets/img/author/me/sang.nguyenngoc_w_506.webp"
   email: "nnsang24@gmail.com"
-  phone: "(+84) 589483850"
+  # phone: "(912) 555-4321"
   website: "https://www.ngocsangyem.dev/"
   summary: >
-    Sang Nguyen from Viet Nam.
-    Highly motivated and skilled frontend developer with a good knowledge of HTML, CSS, and Javascript. Programming knowledge enhanced by constant research and professional development. Ability to work well under stress and with short deadlines. Always take user-centered to design solutions in both the digital and the physical world. Enjoys being part of a productive team, equally comfortable working on own initiative.
+    Sang Nguyen hails from Vietnam.
+    He developed a passion for programming during high school and has been mastering JavaScript and TypeScript ever since.
+    As a frontend developer, he focuses on building intuitive, high-performance web applications using these technologies.
+    His work combines a deep understanding of JavaScript and TypeScript with a love for clean code and innovative UI/UX design.
+    Outside of work, his interests range from exploring the latest web development trends to tackling complex programming challenges.
+    everything from quantum computing to chaos theory.
+    But if you ask him about it, be ready for an in-depth conversation!
   location:
     address: ""
     postalCode: ""
     city: "Ho Chi Minh"
     countryCode: "VN"
-    region: ""
+    region: "Thu Duc"
   profiles:
-    - network: "Twitter"
+    - network: "X"
       username: "ngocsangyem"
-      url: "https://twitter.com/ngocsangyem"
+      url: "https://x.com/ngocsangyem"
     - network: "LinkedIn"
-      username: "ngocsangyem"
-      url: "https://www.linkedin.com/in/ngocsangyem"
+      username: "Sang Nguyen"
+      url: "https://www.linkedin.com/in/ngocsangyem/"
 work:
   - company: "Gforces"
     position: "Frontend Developer"
@@ -70,14 +75,14 @@ work:
       - "Ensuring smooth implementation of content that was cross-platform/browser compatible, and responsive in mobile devices."
       - "Utilizing industry knowledge and how it relates to customer needs to overcome customer concerns."
 # volunteer:
-#   - organization: "CoderDojo"
-#     position: "Teacher"
-#     website: "https://coderdojo.com/"
-#     startDate: "2012-01-01"
-#     endDate: "2013-01-01"
-#     summary: "Global movement of free coding clubs for young people."
+#   - organization: ""
+#     position: ""
+#     website: ""
+#     startDate: ""
+#     endDate: ""
+#     summary: ""
 #     highlights:
-#       - "Awarded 'Teacher of the Month'"
+#       - ""
 education:
   - institution: "Udemy"
     area: ""
@@ -113,7 +118,7 @@ education:
 #     summary: "Innovative middle-out compression algorithm that changes the way we store data."
 skills:
   - name: "Web Development"
-    # level: "Master"
+    level: "Master"
     keywords:
       - "Vuejs"
       - "Reactjs"
@@ -124,12 +129,6 @@ skills:
       - "Git"
       - "Gulp"
       - "Webpack"
-  # - name: "Compression"
-  #   level: "Master"
-  #   keywords:
-  #     - "Mpeg"
-  #     - "MP4"
-  #     - "GIF"
 languages:
   - language: "English"
     fluency: "Reading, Listening, and Speaking"
@@ -138,7 +137,7 @@ interests:
     keywords:
       - "Football"
       - "Chest"
-# references:
-#   - name: "Sang Nguyen"
-#     reference: >
-#       I used to think design & coding was a passion, then one day I suddenly realized it was this life….
+references:
+  - name: "Sang Nguyen"
+    reference: >
+      I used to think design & coding was a passion, then one day I suddenly realized it was this life….
