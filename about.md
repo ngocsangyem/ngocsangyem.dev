@@ -10,11 +10,11 @@ order: 1
 ## Hello, World
 
 Hi, I'm Sang.<br/>
-A Frontend Developer at Aspire with 4+ years of experience in web development. My expertise lies in JavaScript and TypeScript, and I’m passionate about building efficient, high-performance web applications. My journey in programming began in high school, and over time, I've evolved my skills to create impactful digital experiences.
+A Frontend Developer at Aspire with 5+ years of hands-on experience building modern web applications. I specialise in JavaScript and TypeScript, and I love turning complex requirements into fast, elegant user experiences. My programming journey began back in high school, and ever since I’ve been honing my skills to create digital products that make a real impact.
 
-At Aspire, I actively contribute to the source code and participate in code reviews with my colleagues. I believe that collaboration and knowledge sharing are crucial in maintaining high-quality software. By working together as a team, we can spot potential issues early, improve code efficiency, and ensure the security of our applications.
+At Aspire I contribute directly to the codebase and partner closely with teammates in thorough code reviews. I’m a strong believer in collaboration and knowledge-sharing: working together helps us spot issues early, boost performance, and keep our applications secure and maintainable.
 
-This blog is where I’ll share insights from my experiences—whether it's about frontend development best practices, code reviews, or tips on effective teamwork. My goal is to provide value to both newcomers and experienced developers by exploring how to create better, more secure, and scalable applications through collaboration.
+This blog is my place to share what I’ve learned, whether it’s front-end best practices, code-review techniques, or tips for effective teamwork. My aim is to provide practical insights that help both new and seasoned developers build scalable, high-quality software through a culture of collaboration.
 
 
 
