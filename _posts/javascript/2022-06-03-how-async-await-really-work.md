@@ -5,6 +5,9 @@ description: >
   "An async function is a function declared with the async keyword, and the await keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains." - MDN
 image: /assets/img/blog/javascript/jun_2022/async_dog.webp
 sitemap: true
+category: javascript
+tags:
+- javascript
 ---
 
 * this ordered seed list will be replaced by the toc

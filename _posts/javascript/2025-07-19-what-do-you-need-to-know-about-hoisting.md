@@ -5,6 +5,9 @@ description: >
   "The term 'hoisting' describes the behavior of moving declarations to the top." - MDN
 image: /assets/img/blog/javascript/july_2025/javascript_hoisting.webp
 sitemap: true
+category: javascript
+tags:
+- javascript
 ---
 
 JavaScript hoisting is one of those concepts that can trip up developers at any level. You might have encountered mysterious `undefined` values or unexpected function behaviors without realizing hoisting was the culprit. Let's demystify this fundamental JavaScript behavior.
