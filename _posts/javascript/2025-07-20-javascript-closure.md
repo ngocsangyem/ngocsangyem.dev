@@ -28,7 +28,8 @@ In simpler terms, a closure gives you access to an outer function's scope from a
 
 Before we dive into the technical details, let's understand closures with a simple analogy that makes the concept crystal clear.
 
-As explained by @mukeshb on DevTo: *"Imagine you have a box (a function) with some items inside it (variables). So, once you close the box, you cannot access the items inside from the outside. However, with closure, you have a magical way of reaching into the box and using those items even after the box is closed."*
+As explained by @mukeshb on [DevTo](https://dev.to/mukeshb/understanding-javascript-closures-a-comprehensive-guide-306p):
+> Imagine you have a box (a function) with some items inside it (variables). So, once you close the box, you cannot access the items inside from the outside. However, with closure, you have a magical way of reaching into the box and using those items even after the box is closed.
 
 Let's expand on this analogy:
 
