@@ -1,0 +1,1 @@
+This project is a personal blog and portfolio for Sang Nguyen, a frontend developer. The blog contains articles on web development topics such as JavaScript (including closures, hoisting, async/await), HTML, CSS, Vue.js, and Jekyll. The author's goal is to share knowledge and experience in frontend development.
