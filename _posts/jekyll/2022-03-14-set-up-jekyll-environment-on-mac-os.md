@@ -1,7 +1,16 @@
 ---
 layout: post
 title: Set up Jekyll environment on macOS
-description: Set Ruby, Bundler and Jekyll on macOS Silicon
+description: >
+  Complete guide to setting up Ruby, Bundler and Jekyll on macOS Silicon M1/M2 chips for local development.
+image: /assets/img/blog/jekyll/jekyll-macos-setup.webp
+sitemap: true
+category: jekyll
+tags:
+  - jekyll
+  - ruby
+  - macos
+  - setup
 ---
 
 This guide is for macOS Catalina and is based on the [Jekyll on macOS] doc and my experience.

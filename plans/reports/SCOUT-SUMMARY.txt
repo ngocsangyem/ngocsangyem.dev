@@ -1,0 +1,224 @@
+================================================================================
+JEKYLL PERFORMANCE & SEO SCOUT REPORT - SUMMARY
+================================================================================
+Date: 2025-12-09
+Project: ngocsangyem.dev (Jekyll 4.3 + Hydejack theme)
+Scout Scope: Performance and SEO-impacting files
+
+================================================================================
+REPORTS GENERATED
+================================================================================
+
+1. scout-251209-jekyll-perf-seo.md (426 lines, 13KB)
+   - Comprehensive analysis of all performance & SEO features
+   - Detailed descriptions of what each file does
+   - Performance recommendations (high/medium/low priority)
+   - Unresolved questions for follow-up
+
+2. scout-251209-file-index.md (278 lines, 13KB)
+   - Complete file index organized by category
+   - Impact ratings (HIGH/MEDIUM/LOW)
+   - Performance levers identified
+   - File count summary
+
+================================================================================
+KEY FINDINGS SUMMARY
+================================================================================
+
+TOTAL FILES IDENTIFIED: 280+
+  - Config files: 2
+  - Head includes (theme): 9
+  - Layout templates: 18
+  - Component includes: 4+
+  - SCSS files: 80+
+  - JavaScript files: 6
+  - Image assets: 150+ (with responsive variants)
+  - Data files: 6
+  - Generated SEO files: 3
+
+================================================================================
+PERFORMANCE FEATURES FOUND
+================================================================================
+
+ENABLED:
+✓ HTML compression (via compress_html plugin)
+✓ CSS minification (sass.style: compressed)
+✓ CSS inlining (critical path CSS)
+✓ JS loader optimization (async/defer strategies)
+✓ Image responsive variants (WebP + multiple widths)
+✓ Include caching (jekyll-include-cache plugin)
+✓ Dark mode with CSS variables
+✓ Font display=swap (prevents FOUT)
+
+DISABLED (Can Enable):
+✗ Service Worker (offline.enabled: false)
+✗ Analytics integration hook (available but not configured)
+
+================================================================================
+SEO FEATURES FOUND
+================================================================================
+
+ENABLED:
+✓ jekyll-seo-tag plugin (auto meta/OG/Twitter cards)
+✓ jekyll-sitemap plugin (auto XML sitemap)
+✓ jekyll-feed plugin (RSS/Atom feed)
+✓ jekyll-last-modified-at (modification date tracking)
+✓ Structured data support (JSON-LD ready)
+✓ Keywords meta tag
+✓ robots.txt auto-generation
+✓ hreflang language links
+✓ Twitter card configuration
+
+CONFIGURED IN _config.yml:
+- Author: Sang Nguyen (nnsang24@gmail.com)
+- Twitter handle: @ngocsangyem
+- Keywords: Frontend, HTML, Javascript, CSS, Vue.js, Travel
+- Logo: WebP profile image
+- Description: ~150 char meta description
+
+NOT CONFIGURED:
+- Google/Bing webmaster verification
+- Facebook Open Graph app ID
+- Matomo/Google Analytics integration
+
+================================================================================
+CRITICAL FILES FOR PERFORMANCE/SEO
+================================================================================
+
+1. _config.yml
+   - All site settings, plugin configuration, SEO metadata
+   - Impact: HIGHEST - Controls everything
+
+2. _includes/head/styles.html + styles-inline.html
+   - CSS inlining strategy and performance
+   - Impact: HIGH - First Contentful Paint
+
+3. _includes/head/scripts.html
+   - JavaScript loading strategy
+   - Impact: HIGH - Core Web Vitals
+
+4. #jekyll-theme-hydejack/_layouts/compress.html
+   - HTML compression wrapper
+   - Impact: HIGH - Page size reduction
+
+5. assets/img/ directory
+   - All responsive images with WebP variants
+   - Impact: HIGH - Largest asset category
+
+6. _includes/components/post.html
+   - Blog post rendering with metadata
+   - Impact: HIGH - Blog SEO
+
+7. _includes/js/service-worker.js
+   - Advanced caching strategy (currently disabled)
+   - Impact: HIGH when enabled
+
+================================================================================
+RECOMMENDATIONS (BY PRIORITY)
+================================================================================
+
+HIGH PRIORITY:
+  1. Enable Service Worker for offline support & caching
+  2. Add Google/Bing webmaster verification to _config.yml
+  3. Review and optimize Core Web Vitals
+  4. Implement image lazy loading attributes
+  5. Consider adding JSON-LD breadcrumbs
+
+MEDIUM PRIORITY:
+  1. Configure Google Analytics or Matomo
+  2. Set up cache-control headers on server
+  3. Consider AMP if mobile traffic is significant
+  4. Monitor sitemap coverage and crawl stats
+  5. Test Open Graph image rendering
+
+LOW PRIORITY:
+  1. Implement Brotli compression (server-side)
+  2. Add breadcrumb JSON-LD
+  3. Create sitemap index for very large sites
+  4. Consider rel=preconnect for Google Fonts
+  5. Add search result structured snippets
+
+================================================================================
+UNRESOLVED QUESTIONS
+================================================================================
+
+1. Are custom robots.txt rules needed beyond auto-generated?
+2. Is analytics (GA/Matomo) implemented? (Hook exists but unconfigured)
+3. Are Open Graph images configured per-post in front matter?
+4. Is HTTP/2 server push configured at hosting level?
+5. Should Service Worker be enabled for this site?
+6. Are there custom .htaccess or server-level cache rules?
+7. Is the site on a CDN? (Not found in config)
+8. What hosting platform is being used?
+
+================================================================================
+FILE LOCATION MAP
+================================================================================
+
+Site Root: /Users/sangnguyen/Documents/ngocsangyem.dev/
+
+Source Files:
+  _config.yml                    - Main configuration
+  _includes/                     - Custom include hooks
+  _sass/                         - Custom SCSS
+  _data/                         - Metadata files
+  assets/img/                    - Image assets
+  offline.md                     - Offline page
+
+Theme Files (Local Copy):
+  #jekyll-theme-hydejack/_includes/head/    - Head section includes
+  #jekyll-theme-hydejack/_layouts/          - Layout templates
+  #jekyll-theme-hydejack/_sass/             - Theme styling
+  #jekyll-theme-hydejack/assets/js/         - JavaScript
+
+Generated Files (in _site/):
+  sitemap.xml                    - SEO sitemap
+  robots.txt                     - Crawl directives
+  feed.xml                       - RSS feed
+  assets/resized/                - Responsive image variants
+
+Reports Location:
+  plans/reports/scout-251209-jekyll-perf-seo.md    - Main analysis
+  plans/reports/scout-251209-file-index.md         - File index
+  plans/reports/SCOUT-SUMMARY.txt                  - This file
+
+================================================================================
+BUILD COMMANDS FOR REFERENCE
+================================================================================
+
+Development:
+  bundle exec jekyll serve              - Local dev server
+  bundle exec jekyll serve --drafts     - Include draft posts
+  bundle exec jekyll serve --incremental - Faster rebuilds
+
+Production:
+  JEKYLL_ENV=production bundle exec jekyll build    - Production build
+  JEKYLL_ENV=production bundle exec jekyll build --lsi - With LSI
+
+Profiling:
+  bundle exec jekyll build --profile    - Build timing analysis
+  JEKYLL_ENV=production bundle exec jekyll build --verbose - Detailed output
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Read the detailed reports:
+   - scout-251209-jekyll-perf-seo.md (comprehensive analysis)
+   - scout-251209-file-index.md (organized file listing)
+
+2. Prioritize optimizations based on recommendations
+
+3. Test performance:
+   - Use Google PageSpeed Insights
+   - Check Core Web Vitals
+   - Monitor crawl statistics
+
+4. Answer unresolved questions to guide further optimization
+
+5. Consider enabling:
+   - Service Worker for offline support
+   - Analytics integration
+   - Additional structured data (breadcrumbs, FAQ schema)
+
+================================================================================

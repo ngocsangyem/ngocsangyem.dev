@@ -1,0 +1,51 @@
+{% comment %}
+  BreadcrumbList structured data for rich search results
+  Automatically generates breadcrumb schema based on URL structure
+
+  Example output for /blog/javascript/2025-07-20-closure/:
+  Home > Blog > Javascript > Javascript closure
+{% endcomment %}
+
+{% if page.url != "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url | default: site.baseurl }}"
+    }
+    {%- assign url_parts = page.url | split: '/' | compact -%}
+    {%- assign position = 2 -%}
+    {%- assign accumulated_path = "" -%}
+    {%- for part in url_parts -%}
+      {%- unless forloop.last -%}
+        {%- assign accumulated_path = accumulated_path | append: '/' | append: part -%}
+        {%- assign part_name = part | replace: '-', ' ' | capitalize -%}
+        {%- comment %} Handle year-month-day patterns in URLs {% endcomment -%}
+        {%- if part contains '20' and part.size == 10 -%}
+          {%- continue -%}
+        {%- endif -%}
+    ,{
+      "@type": "ListItem",
+      "position": {{ position }},
+      "name": "{{ part_name }}",
+      "item": "{{ site.url | default: site.baseurl }}{{ accumulated_path }}/"
+    }
+        {%- assign position = position | plus: 1 -%}
+      {%- endunless -%}
+    {%- endfor -%}
+    {%- if page.title -%}
+    ,{
+      "@type": "ListItem",
+      "position": {{ position }},
+      "name": "{{ page.title | strip_html | escape | truncate: 50 }}"
+    }
+    {%- endif -%}
+  ]
+}
+</script>
+{% endif %}

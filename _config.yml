@@ -3,7 +3,7 @@
 
 # Uncomment and set the URL of your site (with protocol, e.g. `https://`)
 # NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
-# url:                   https://username.github.io
+url:                   https://ngocsangyem.dev
 
 # Uncomment and set the "base URL" of your site.
 # When your site is in a subdirectory, set to `/<name of directory>`,
@@ -25,7 +25,7 @@ title:                 Sang
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  Highly motivated and skilled frontend developer with a good knowledge of HTML, CSS, and Javascript. Programming knowledge enhanced by constant research and professional development. Ability to work well under stress and with short deadlines. Always take user-centered to design solutions in both the digital and the physical world. Enjoys being part of a productive team, equally comfortable working on own initiative.
+  Frontend developer specializing in HTML, CSS, JavaScript & Vue.js. Building user-centered web solutions with modern technologies. Blog about web development and life.
 
 # A shorter description for the sidebar.
 tagline:               Start today not tomorrow
@@ -95,7 +95,8 @@ theme: jekyll-theme-hydejack
 # ----------------------------------------------------------------------------------------
  
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg.jpg
+# Using WebP for better compression (45KB vs 152KB original JPG)
+accent_image:          /assets/img/sidebar-bg.webp
 accent_color:          rgb(79,177,186)
 
 # This is used for the `theme-color` meta tag,
@@ -280,10 +281,12 @@ hydejack:
   # This is an _experimental_ feature.
   # Only use if you know what Service Workers are and how they can impact your site!
   offline:
-    enabled:           false
-    cache_version:     13
+    enabled:           true
+    cache_version:     14
     precache_assets:
       - /assets/img/swipe.svg
+      - /assets/css/hydejack-9.2.1.css
+      - /assets/js/hydejack-9.2.1.js
 
 
 # Collections
@@ -347,8 +350,11 @@ plugins:
 # ---------------------------------------------------------------------------------------
 
 # Where you proof that you own this site (used by jekyll-seo-tag)
-# google_site_verification: <verification-id>
-# -- or --
+# Get your verification code from: https://search.google.com/search-console
+# Then replace YOUR_GOOGLE_VERIFICATION_CODE below
+google_site_verification: YOUR_GOOGLE_VERIFICATION_CODE
+
+# For multiple search engines, use webmaster_verifications instead:
 # webmaster_verifications:
 #   google:              <verification-id>
 #   bing:                <verification-id>
@@ -365,12 +371,12 @@ twitter:
 #   publisher:           <id>
 #   admins:              <id>
 
-# Used on index and about sites
-# social:
-#   name:                <firstname> <lastname>
-#   links:
-#     - https://twitter.com/<username>
-#     - https://github.com/<username>
+# Used on index and about sites - generates sameAs in JSON-LD
+social:
+  name:                Sang Nguyen
+  links:
+    - https://twitter.com/ngocsangyem
+    - https://github.com/ngocsangyem
 
 
 # Plugin Configs

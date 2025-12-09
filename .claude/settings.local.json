@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(mkdir:*)",
+      "Bash(bash -c:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "Bash(echo:*)",
+      "Bash(xargs -I {} bash -c 'echo \"\"\"\"✓ {}\"\"\"\"; wc -l {} | awk \"\"\"\"{print \\\"\"\"\"  Lines: \\\"\"\"\" \\$1}\"\"\"\"')",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(gzip:*)",
+      "Bash(JEKYLL_ENV=production bundle exec jekyll build:*)",
+      "Bash(cwebp:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $f ===\" head -15 \"$f\")",
+      "Skill(ai-multimodal)",
+      "Bash(python scripts/gemini_batch_process.py:*)",
+      "Bash(convert:*)",
+      "Bash(gradient:'#193747-#0d1f29' )",
+      "Bash(/Users/sangnguyen/Documents/ngocsangyem.dev/assets/img/blog/jekyll/jekyll-macos-setup.png)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

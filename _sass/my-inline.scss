@@ -1,4 +1,30 @@
-// You can add CSS rules here that will be inlined into each document.
+// Custom inline CSS - minimal additions that don't conflict with Hydejack theme
+// The theme handles sidebar, navbar, and layout - DO NOT override those styles
+// Only add styles here that complement the theme
+
+// =============================================================================
+// Performance: Prevent layout shift for images
+// =============================================================================
+
+// Reserve space for images to prevent CLS
+img[width][height] {
+  height: auto;
+}
+
+// =============================================================================
+// Custom accent color variables (optional overrides)
+// =============================================================================
+
+// Uncomment to customize colors beyond _config.yml settings
+// :root {
+//   --accent-color: rgb(79, 177, 186);
+// }
+
+// =============================================================================
+// Custom sidebar text shadow (example from original file)
+// =============================================================================
+
+// Uncomment to add text shadow to sidebar links
 // .sidebar a {
 //   text-shadow: rgba(0, 0, 0, 0.25) 0.1rem 0.1rem 0.15rem;
 // }

@@ -8,6 +8,13 @@ sitemap: true
 category: javascript
 tags:
 - javascript
+faq:
+  - question: What is a closure in JavaScript?
+    answer: A closure is a function that has access to variables from its outer (enclosing) function's scope, even after the outer function has returned. It "closes over" those variables.
+  - question: Why are closures useful in JavaScript?
+    answer: Closures enable data privacy, function factories, maintaining state in callbacks, and creating modules. They are fundamental for patterns like currying and memoization.
+  - question: Do closures cause memory leaks?
+    answer: Closures can cause memory leaks if not managed properly, as they keep references to outer scope variables. However, modern JavaScript engines handle this well with garbage collection.
 ---
 
 JavaScript closures are one of the most powerful and fundamental concepts in the language, yet they often mystify developers. You've likely used closures without even realizing it! Understanding closures will unlock advanced patterns and help you write more elegant, maintainable code.

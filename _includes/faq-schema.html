@@ -1,0 +1,34 @@
+{% comment %}
+  FAQPage structured data for rich search results
+  Add FAQ data to posts to get FAQ rich snippets in Google
+
+  Usage in post front matter:
+  ---
+  faq:
+    - question: What is a closure?
+      answer: A closure is a function that remembers variables from its outer scope.
+    - question: Why use closures?
+      answer: Closures enable data privacy and state management.
+  ---
+{% endcomment %}
+
+{% if page.faq and page.faq.size > 0 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in page.faq -%}
+    {
+      "@type": "Question",
+      "name": "{{ item.question | strip_html | escape }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ item.answer | strip_html | escape }}"
+      }
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{% endif %}

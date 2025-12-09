@@ -1,1 +1,38 @@
-<!-- Add HTML tags here to be included in the head -->
+<!-- Performance: Resource Hints -->
+<!-- Preconnect to external origins for faster resource loading -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+<!-- Preload sidebar image with responsive AVIF/WebP (LCP candidate) -->
+{% unless page.no_sidebar %}
+<link rel="preload" as="image"
+      href="/assets/img/sidebar-bg.avif"
+      imagesrcset="/assets/img/sidebar-bg-640.avif 640w,
+                   /assets/img/sidebar-bg-1280.avif 1280w,
+                   /assets/img/sidebar-bg.avif 1920w"
+      imagesizes="(max-width: 64rem) 100vw, 21rem"
+      type="image/avif">
+{% endunless %}
+
+<!-- Preload post cover image if exists (for blog posts) -->
+{% if page.image.path %}
+  {% assign img_base = page.image.path | split: '.' | first %}
+  <link rel="preload" as="image" href="{{ img_base }}.avif" type="image/avif">
+{% elsif page.image %}
+  {% assign img_base = page.image | split: '.' | first %}
+  <link rel="preload" as="image" href="{{ img_base }}.avif" type="image/avif">
+{% endif %}
+
+<!-- Conditional KaTeX loading - only on pages with math: true -->
+{% if page.math == true or page.katex == true %}
+<link rel="preload" as="style"
+      href="/assets/bower_components/katex/dist/katex.min.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="/assets/bower_components/katex/dist/katex.min.css">
+</noscript>
+{% endif %}
+
+<!-- Structured Data: Breadcrumbs and FAQ -->
+{% include breadcrumbs-schema.html %}
+{% include faq-schema.html %}

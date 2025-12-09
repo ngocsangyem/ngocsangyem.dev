@@ -1,0 +1,44 @@
+{% comment %}
+  Picture element with AVIF/WebP/fallback support
+
+  Usage:
+    {% include picture.html
+       src="/assets/img/blog/example.jpg"
+       alt="Description"
+       width="800"
+       height="450"
+       lazy=true
+       class="my-class"
+    %}
+
+  Parameters:
+    - src (required): Path to the fallback image (jpg/png)
+    - alt: Alt text for accessibility
+    - width: Image width (helps prevent CLS)
+    - height: Image height (helps prevent CLS)
+    - lazy: Set to false to disable lazy loading (default: true)
+    - class: CSS class(es) to apply
+    - avif: Set to false to skip AVIF source (default: true)
+    - webp: Set to false to skip WebP source (default: true)
+{% endcomment %}
+
+{% assign img_path = include.src | split: '.' %}
+{% assign img_base = img_path | first %}
+{% assign img_ext = img_path | last %}
+
+<picture>
+  {% unless include.avif == false %}
+  <source srcset="{{ img_base }}.avif" type="image/avif">
+  {% endunless %}
+  {% unless include.webp == false %}
+  <source srcset="{{ img_base }}.webp" type="image/webp">
+  {% endunless %}
+  <img
+    src="{{ include.src | relative_url }}"
+    alt="{{ include.alt | default: '' | escape }}"
+    {% if include.width %}width="{{ include.width }}"{% endif %}
+    {% if include.height %}height="{{ include.height }}"{% endif %}
+    {% unless include.lazy == false %}loading="lazy" decoding="async"{% endunless %}
+    {% if include.class %}class="{{ include.class }}"{% endif %}
+  >
+</picture>
