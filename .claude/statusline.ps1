@@ -1,88 +1,25 @@
 #Requires -Version 5.1
 # Custom Claude Code statusline for PowerShell
 # Cross-platform support: Windows PowerShell 5.1+, PowerShell Core 7+
-# Theme: detailed | Colors: true | Features: directory, git, model, usage, session, tokens
+# Theme: detailed | Features: directory, git, model, usage, session, tokens
+#
+# Context Window Calculation:
+# - 100% = compaction threshold (not model limit)
+# - Self-calibrates via PreCompact hook
+# - Falls back to smart defaults based on window size
 
 # Set UTF-8 encoding
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
-# Enable virtual terminal sequences for ANSI colors
-function Enable-VirtualTerminal {
-    if ($PSVersionTable.PSVersion.Major -ge 6) {
-        # PowerShell Core 7+ has built-in support
-        return
-    }
-
-    # Windows PowerShell 5.1 - enable virtual terminal
-    try {
-        $null = [System.Console]::OutputEncoding
-        if ($PSVersionTable.PSVersion.Major -eq 5) {
-            # Attempt to enable virtual terminal processing
-            $signature = @'
-[DllImport("kernel32.dll", SetLastError = true)]
-public static extern IntPtr GetStdHandle(int nStdHandle);
-
-[DllImport("kernel32.dll", SetLastError = true)]
-public static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
-
-[DllImport("kernel32.dll", SetLastError = true)]
-public static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
-'@
-            $type = Add-Type -MemberDefinition $signature -Name 'WinAPI' -Namespace 'VirtualTerminal' -PassThru -ErrorAction SilentlyContinue
-            if ($type) {
-                $handle = $type::GetStdHandle(-11) # STD_OUTPUT_HANDLE
-                $mode = 0
-                $null = $type::GetConsoleMode($handle, [ref]$mode)
-                $mode = $mode -bor 0x0004 # ENABLE_VIRTUAL_TERMINAL_PROCESSING
-                $null = $type::SetConsoleMode($handle, $mode)
-            }
-        }
-    }
-    catch {
-        # Silent fail - colors just won't work
-    }
-}
-
-# Initialize color support
-$script:UseColor = $true
-if ($env:NO_COLOR) {
-    $script:UseColor = $false
-}
-elseif (-not [Console]::IsOutputRedirected -and [Console]::OutputEncoding) {
-    Enable-VirtualTerminal
-}
-else {
-    $script:UseColor = $false
-}
-
-# Color helper functions
-function Get-Color {
-    param([string]$Code)
-    if ($script:UseColor) { return "`e[${Code}m" }
-    return ""
-}
-
-function Get-Reset {
-    if ($script:UseColor) { return "`e[0m" }
-    return ""
-}
-
-# Color definitions
-$DirColor = Get-Color "1;36"      # cyan
-$GitColor = Get-Color "1;32"      # green
-$ModelColor = Get-Color "1;35"    # magenta
-$VersionColor = Get-Color "1;33"  # yellow
-$UsageColor = Get-Color "1;35"    # magenta
-$CostColor = Get-Color "1;36"     # cyan
-$Reset = Get-Reset
+# Calibration file path (now in ck/ namespace - fixes #178)
+$CalibrationPath = Join-Path (Join-Path $env:TEMP "ck") "calibration.json"
 
 # Time conversion functions
 function ConvertTo-Epoch {
     param([string]$Timestamp)
 
     try {
-        # Parse ISO8601 timestamp
         $dt = [DateTime]::Parse($Timestamp).ToUniversalTime()
         $epoch = [DateTimeOffset]::new($dt).ToUnixTimeSeconds()
         return $epoch
@@ -104,36 +41,86 @@ function Format-TimeHM {
     }
 }
 
+# Get smart default compact threshold based on context window size
+# Research-based defaults:
+# - 200k window: ~80% (160k) - confirmed from GitHub issues
+# - 500k window: ~60% (300k) - estimated
+# - 1M window: ~33% (330k) - derived from user observations
+function Get-DefaultCompactThreshold {
+    param([int]$ContextWindowSize)
+
+    # Known thresholds (autocompact buffer = 22.5% for 200k)
+    $KnownThresholds = @{
+        200000 = 155000   # 77.5% - confirmed via /context
+        1000000 = 330000  # 33% - 1M beta window
+    }
+
+    # Exact match
+    if ($KnownThresholds.ContainsKey($ContextWindowSize)) {
+        return $KnownThresholds[$ContextWindowSize]
+    }
+
+    # Tiered defaults based on window size
+    if ($ContextWindowSize -ge 1000000) {
+        return [Math]::Floor($ContextWindowSize * 0.33)
+    }
+    else {
+        # Default: ~77.5% for standard windows (200k confirmed)
+        return [Math]::Floor($ContextWindowSize * 0.775)
+    }
+}
+
+# Read calibrated threshold from file if available
+function Get-CompactThreshold {
+    param([int]$ContextWindowSize)
+
+    # Try to read calibration file
+    if (Test-Path $CalibrationPath) {
+        try {
+            $calibration = Get-Content $CalibrationPath -Raw | ConvertFrom-Json
+            $key = [string]$ContextWindowSize
+            if ($calibration.$key -and $calibration.$key.threshold -gt 0) {
+                return [int]$calibration.$key.threshold
+            }
+        }
+        catch {
+            # Silent fail - use defaults
+        }
+    }
+
+    # Fall back to smart defaults
+    return Get-DefaultCompactThreshold $ContextWindowSize
+}
+
 function Get-ProgressBar {
     param(
         [int]$Percent = 0,
-        [int]$Width = 10
+        [int]$Width = 12
     )
 
     if ($Percent -lt 0) { $Percent = 0 }
     if ($Percent -gt 100) { $Percent = 100 }
 
-    $filled = [Math]::Floor($Percent * $Width / 100)
+    $filled = [Math]::Round($Percent * $Width / 100)
     $empty = $Width - $filled
 
-    $bar = ("=" * $filled) + ("-" * $empty)
+    # ▰ (U+25B0) filled, ▱ (U+25B1) empty - smooth horizontal rectangles
+    $bar = ("▰" * $filled) + ("▱" * $empty)
     return $bar
 }
 
-function Get-SessionColor {
-    param([int]$SessionPercent)
+# Get severity emoji based on percentage (no color codes)
+function Get-SeverityEmoji {
+    param([int]$Percent)
 
-    if (-not $script:UseColor) { return "" }
-
-    $remaining = 100 - $SessionPercent
-    if ($remaining -le 10) {
-        return "`e[1;31m"  # red
+    if ($Percent -ge 90) {
+        return "🔴"      # Critical
     }
-    elseif ($remaining -le 25) {
-        return "`e[1;33m"  # yellow
+    elseif ($Percent -ge 70) {
+        return "🟡"      # Warning
     }
     else {
-        return "`e[1;32m"  # green
+        return "🟢"      # Healthy
     }
 }
 
@@ -200,13 +187,39 @@ catch {
     # Not in a git repository
 }
 
-# ccusage integration
+# Context window usage (Claude Code v2.0.65+)
+# Calculate percentage against COMPACT THRESHOLD, not model limit
+# 100% = compaction imminent
+$contextPercent = 0
+$contextText = ""
+
+$contextInput = 0
+$contextOutput = 0
+$contextSize = 0
+
+if ($data.context_window) {
+    $contextInput = [int]($data.context_window.total_input_tokens ?? 0)
+    $contextOutput = [int]($data.context_window.total_output_tokens ?? 0)
+    $contextSize = [int]($data.context_window.context_window_size ?? 0)
+}
+
+if ($contextSize -gt 0) {
+    $contextTotal = $contextInput + $contextOutput
+    $compactThreshold = Get-CompactThreshold $contextSize
+
+    # Calculate percentage against compact threshold
+    $contextPercent = [Math]::Floor($contextTotal * 100 / $compactThreshold)
+    # Clamp to 100% max to handle edge cases
+    if ($contextPercent -gt 100) { $contextPercent = 100 }
+
+    # Get severity emoji and progress bar
+    $severityEmoji = Get-SeverityEmoji $contextPercent
+    $bar = Get-ProgressBar $contextPercent 12
+    $contextText = "$severityEmoji $bar ${contextPercent}%"
+}
+
+# Session timer
 $sessionText = ""
-$sessionPercent = 0
-$sessionBar = ""
-$costUSD = ""
-$costPerHour = ""
-$totalTokens = ""
 
 try {
     # Try npx first, then ccusage
@@ -228,16 +241,6 @@ try {
         $activeBlock = $blocks.blocks | Where-Object { $_.isActive -eq $true } | Select-Object -First 1
 
         if ($activeBlock) {
-            if ($activeBlock.costUSD) {
-                $costUSD = $activeBlock.costUSD
-            }
-            if ($activeBlock.burnRate.costPerHour) {
-                $costPerHour = $activeBlock.burnRate.costPerHour
-            }
-            if ($activeBlock.totalTokens) {
-                $totalTokens = $activeBlock.totalTokens
-            }
-
             # Session time calculation
             $resetTimeStr = $activeBlock.usageLimitResetTime
             if (-not $resetTimeStr) {
@@ -257,15 +260,15 @@ try {
                 if ($elapsed -lt 0) { $elapsed = 0 }
                 if ($elapsed -gt $total) { $elapsed = $total }
 
-                $sessionPercent = [Math]::Floor($elapsed * 100 / $total)
                 $remaining = $endSec - $nowSec
                 if ($remaining -lt 0) { $remaining = 0 }
 
-                $rh = [Math]::Floor($remaining / 3600)
-                $rm = [Math]::Floor(($remaining % 3600) / 60)
-                $endHM = Format-TimeHM $endSec
-
-                $sessionText = "${rh}h ${rm}m until reset at ${endHM}"
+                if ($remaining -gt 0 -and $remaining -lt 18000) {
+                    $rh = [Math]::Floor($remaining / 3600)
+                    $rm = [Math]::Floor(($remaining % 3600) / 60)
+                    $endHM = Format-TimeHM $endSec
+                    $sessionText = "${rh}h ${rm}m until reset at ${endHM}"
+                }
             }
         }
     }
@@ -274,45 +277,31 @@ catch {
     # Silent fail - ccusage not available
 }
 
-# Render statusline
+# Render statusline (no ANSI colors - emoji only)
 $output = ""
-$output += "📁 ${DirColor}${currentDir}${Reset}"
+$output += "📁 ${currentDir}"
 
 # Git branch
 if ($gitBranch) {
-    $output += "  🌿 ${GitColor}${gitBranch}${Reset}"
+    $output += "  🌿 ${gitBranch}"
 }
 
 # Model
-$output += "  🤖 ${ModelColor}${modelName}${Reset}"
+$output += "  🤖 ${modelName}"
 
 # Model version
 if ($modelVersion) {
-    $output += "  🏷️ ${VersionColor}${modelVersion}${Reset}"
+    $output += " ${modelVersion}"
 }
 
 # Session time
 if ($sessionText) {
-    $sessionColorCode = Get-SessionColor $sessionPercent
-    $output += "  ⌛ ${sessionColorCode}${sessionText}${Reset}"
+    $output += "  ⌛ ${sessionText}"
 }
 
-# Cost
-if ($costUSD -and $costUSD -match '^\d+(\.\d+)?$') {
-    if ($costPerHour -and $costPerHour -match '^\d+(\.\d+)?$') {
-        $costUSDFormatted = [string]::Format("{0:F2}", [double]$costUSD)
-        $costPerHourFormatted = [string]::Format("{0:F2}", [double]$costPerHour)
-        $output += "  💵 ${CostColor}`$$costUSDFormatted (`$$costPerHourFormatted/h)${Reset}"
-    }
-    else {
-        $costUSDFormatted = [string]::Format("{0:F2}", [double]$costUSD)
-        $output += "  💵 ${CostColor}`$$costUSDFormatted${Reset}"
-    }
-}
-
-# Tokens
-if ($totalTokens -and $totalTokens -match '^\d+$') {
-    $output += "  📊 ${UsageColor}${totalTokens} tok${Reset}"
+# Context window usage (Claude Code v2.0.65+)
+if ($contextText) {
+    $output += "  $contextText"
 }
 
 Write-Host $output

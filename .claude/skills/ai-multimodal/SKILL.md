@@ -1,12 +1,13 @@
 ---
-name: ai-multimodal
-description: Process and generate multimedia content using Google Gemini API for better vision capabilities. Capabilities include analyze audio files (transcription with timestamps, summarization, speech understanding, music/sound analysis up to 9.5 hours), understand images (better image analysis than Claude models, captioning, reasoning, object detection, design extraction, OCR, visual Q&A, segmentation, handle multiple images), process videos (scene detection, Q&A, temporal analysis, YouTube URLs, up to 6 hours), extract from documents (PDF tables, forms, charts, diagrams, multi-page), generate images (text-to-image with Imagen 4, editing, composition, refinement), generate videos (text-to-video with Veo 3, 8-second clips with native audio). Use when working with audio/video files, analyzing images or screenshots (instead of default vision capabilities of Claude, only fallback to Claude's vision capabilities if needed), processing PDF documents, extracting structured data from media, creating images/videos from text prompts, or implementing multimodal AI features. Supports Gemini 3/2.5, Imagen 4, and Veo 3 models with context windows up to 2M tokens.
+name: ck:ai-multimodal
+description: Analyze images/audio/video with Gemini API (better vision than Claude). Generate images (Imagen 4), videos (Veo 3). Use for vision analysis, transcription, OCR, design extraction, multimodal AI.
 license: MIT
 allowed-tools:
   - Bash
   - Read
   - Write
   - Edit
+argument-hint: "[file-path] [prompt]"
 ---
 
 # AI Multimodal
@@ -20,11 +21,37 @@ export GEMINI_API_KEY="your-key"  # Get from https://aistudio.google.com/apikey
 pip install google-genai python-dotenv pillow
 ```
 
+### API Key Rotation (Optional)
+
+For high-volume usage or when hitting rate limits, configure multiple API keys:
+
+```bash
+# Primary key (required)
+export GEMINI_API_KEY="key1"
+
+# Additional keys for rotation (optional)
+export GEMINI_API_KEY_2="key2"
+export GEMINI_API_KEY_3="key3"
+```
+
+Or in your `.env` file:
+```
+GEMINI_API_KEY=key1
+GEMINI_API_KEY_2=key2
+GEMINI_API_KEY_3=key3
+```
+
+**Features:**
+- Auto-rotates on rate limit (429/RESOURCE_EXHAUSTED) errors
+- 60-second cooldown per key after rate limit
+- Logs rotation events with `--verbose` flag
+- Backward compatible: single key still works
+
 ## Quick Start
 
 **Verify setup**: `python scripts/check_setup.py`
 **Analyze media**: `python scripts/gemini_batch_process.py --files <file> --task <analyze|transcribe|extract>`
-  - TIP: When you're asked to analyze an image, check if `gemini` command is available, then use `"<prompt to analyze image>" | gemini -y -m gemini-2.5-flash` command. If `gemini` command is not available, use `python scripts/gemini_batch_process.py --files <file> --task analyze` command.
+  - TIP: When you're asked to analyze an image, check if `gemini` command is available, then use `echo "<prompt to analyze image>" | gemini -y -m <gemini.model>` command (read model from `.claude/.ck.json`: `gemini.model`). If `gemini` command is not available, use `python scripts/gemini_batch_process.py --files <file> --task analyze` command.
 **Generate content**: `python scripts/gemini_batch_process.py --task <generate|generate-video> --prompt "description"`
 
 > **Stdin support**: You can pipe files directly via stdin (auto-detects PNG/JPG/PDF/WAV/MP3).
@@ -52,6 +79,7 @@ Load for detailed guidance:
 
 | Topic | File | Description |
 |-------|------|-------------|
+| Music | `references/music-generation.md` | Lyria RealTime API for background music generation, style prompts, real-time control, integration with video production. |
 | Audio | `references/audio-processing.md` | Audio formats and limits, transcription (timestamps, speakers, segments), non-speech analysis, File API vs inline input, TTS models, best practices, cost and token math, and concrete meeting/podcast/interview recipes. |
 | Images | `references/vision-understanding.md` | Vision capabilities overview, supported formats and models, captioning/classification/VQA, detection and segmentation, OCR and document reading, multi-image workflows, structured JSON output, token costs, best practices, and common product/screenshot/chart/scene use cases. |
 | Image Gen | `references/image-generation.md` | Imagen 4 and Gemini image model overview, generate_images vs generate_content APIs, aspect ratios and costs, text/image/both modalities, editing and composition, style and quality control, safety settings, best practices, troubleshooting, and common marketing/concept-art/UI scenarios. |
@@ -62,6 +90,19 @@ Load for detailed guidance:
 
 **Formats**: Audio (WAV/MP3/AAC, 9.5h), Images (PNG/JPEG/WEBP, 3.6k), Video (MP4/MOV, 6h), PDF (1k pages)
 **Size**: 20MB inline, 2GB File API
+**Important:** 
+- If you are going to generate a transcript of the audio, and the audio length is longer than 15 minutes, the transcript often gets truncated due to output token limits in the Gemini API response. To get the full transcript, you need to split the audio into smaller chunks (max 15 minutes per chunk) and transcribe each segment for a complete transcript.
+- If you are going to generate a transcript of the video and the video length is longer than 15 minutes, use ffmpeg to extract the audio from the video, truncate the audio to 15 minutes, transcribe all audio segments, and then combine the transcripts into a single transcript.
+**Transcription Output Requirements:**
+- Format: Markdown
+- Metadata: Duration, file size, generated date, description, file name, topics covered, etc.
+- Parts: from-to (e.g., 00:00-00:15), audio chunk name, transcript, status, etc.
+- Transcript format: 
+  ```
+  [HH:MM:SS -> HH:MM:SS] transcript content
+  [HH:MM:SS -> HH:MM:SS] transcript content
+  ...
+  ```
 
 ## Resources
 

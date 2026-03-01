@@ -118,3 +118,115 @@ Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
 Installing collected packages: websockets, urllib3, typing-extensions, tqdm, tenacity, python-dotenv, pypdf, pygments, pyasn1, pluggy, Pillow, packaging, markdown, lxml, iniconfig, idna, h11, coverage, charset_normalizer, certifi, cachetools, annotated-types, typing-inspection, rsa, requests, python-docx, pytest, pydantic-core, pyasn1-modules, httpcore, appscript, anyio, pytest-mock, pytest-cov, pydantic, httpx, google-auth, docx2pdf, google-genai
 
 Successfully installed Pillow-12.0.0 annotated-types-0.7.0 anyio-4.12.0 appscript-1.4.0 cachetools-6.2.2 certifi-2025.11.12 charset_normalizer-3.4.4 coverage-7.13.0 docx2pdf-0.1.8 google-auth-2.43.0 google-genai-1.54.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.11 iniconfig-2.3.0 lxml-6.0.2 markdown-3.10 packaging-25.0 pluggy-1.6.0 pyasn1-0.6.1 pyasn1-modules-0.4.2 pydantic-2.12.5 pydantic-core-2.41.5 pygments-2.19.2 pypdf-6.4.1 pytest-9.0.2 pytest-cov-7.0.0 pytest-mock-3.15.1 python-docx-1.2.0 python-dotenv-1.2.1 requests-2.32.5 rsa-4.9.1 tenacity-9.1.2 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.6.1 websockets-15.0.1
+Collecting google-genai>=0.1.0
+  Downloading google_genai-1.65.0-py3-none-any.whl.metadata (51 kB)
+Requirement already satisfied: anyio<5.0.0,>=4.8.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (4.9.0)
+Collecting google-auth<3.0.0,>=2.47.0 (from google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0)
+  Using cached google_auth-2.48.0-py3-none-any.whl.metadata (6.2 kB)
+Requirement already satisfied: httpx<1.0.0,>=0.28.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (0.28.1)
+Requirement already satisfied: pydantic<3.0.0,>=2.9.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (2.11.2)
+Requirement already satisfied: requests<3.0.0,>=2.28.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (2.32.3)
+Requirement already satisfied: tenacity<9.2.0,>=8.2.3 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (9.1.2)
+Requirement already satisfied: websockets<17.0,>=13.0.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (15.0.1)
+Requirement already satisfied: typing-extensions<5.0.0,>=4.11.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (4.13.1)
+Requirement already satisfied: distro<2,>=1.7.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (1.9.0)
+Requirement already satisfied: sniffio in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-genai>=0.1.0) (1.3.1)
+Requirement already satisfied: idna>=2.8 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from anyio<5.0.0,>=4.8.0->google-genai>=0.1.0) (3.10)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0) (0.4.2)
+Collecting cryptography>=38.0.3 (from google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0)
+  Using cached cryptography-46.0.5-cp311-abi3-macosx_10_9_universal2.whl.metadata (5.7 kB)
+Requirement already satisfied: rsa<5,>=3.1.4 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0) (4.9)
+Requirement already satisfied: certifi in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from httpx<1.0.0,>=0.28.1->google-genai>=0.1.0) (2025.1.31)
+Requirement already satisfied: httpcore==1.* in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from httpx<1.0.0,>=0.28.1->google-genai>=0.1.0) (1.0.7)
+Requirement already satisfied: h11<0.15,>=0.13 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from httpcore==1.*->httpx<1.0.0,>=0.28.1->google-genai>=0.1.0) (0.14.0)
+Requirement already satisfied: annotated-types>=0.6.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pydantic<3.0.0,>=2.9.0->google-genai>=0.1.0) (0.7.0)
+Requirement already satisfied: pydantic-core==2.33.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pydantic<3.0.0,>=2.9.0->google-genai>=0.1.0) (2.33.1)
+Requirement already satisfied: typing-inspection>=0.4.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pydantic<3.0.0,>=2.9.0->google-genai>=0.1.0) (0.4.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from requests<3.0.0,>=2.28.1->google-genai>=0.1.0) (3.4.1)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from requests<3.0.0,>=2.28.1->google-genai>=0.1.0) (2.3.0)
+Requirement already satisfied: pyasn1>=0.1.3 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from rsa<5,>=3.1.4->google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0) (0.6.1)
+Collecting cffi>=2.0.0 (from cryptography>=38.0.3->google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0)
+  Using cached cffi-2.0.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=38.0.3->google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai>=0.1.0)
+  Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Downloading google_genai-1.65.0-py3-none-any.whl (724 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 724.4/724.4 kB 6.2 MB/s  0:00:00
+Using cached google_auth-2.48.0-py3-none-any.whl (236 kB)
+Using cached cryptography-46.0.5-cp311-abi3-macosx_10_9_universal2.whl (7.2 MB)
+Using cached cffi-2.0.0-cp312-cp312-macosx_11_0_arm64.whl (181 kB)
+Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+Installing collected packages: pycparser, cffi, cryptography, google-auth, google-genai
+  Attempting uninstall: google-auth
+    Found existing installation: google-auth 2.38.0
+    Uninstalling google-auth-2.38.0:
+      Successfully uninstalled google-auth-2.38.0
+
+Successfully installed cffi-2.0.0 cryptography-46.0.5 google-auth-2.48.0 google-genai-1.65.0 pycparser-3.0
+Collecting pypdf>=4.0.0
+  Downloading pypdf-6.7.4-py3-none-any.whl.metadata (7.1 kB)
+Downloading pypdf-6.7.4-py3-none-any.whl (331 kB)
+Installing collected packages: pypdf
+Successfully installed pypdf-6.7.4
+Collecting python-docx>=1.0.0
+  Using cached python_docx-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: lxml>=3.1.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from python-docx>=1.0.0) (5.3.2)
+Requirement already satisfied: typing_extensions>=4.9.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from python-docx>=1.0.0) (4.13.1)
+Using cached python_docx-1.2.0-py3-none-any.whl (252 kB)
+Installing collected packages: python-docx
+Successfully installed python-docx-1.2.0
+Collecting docx2pdf>=0.1.8
+  Using cached docx2pdf-0.1.8-py3-none-any.whl.metadata (3.3 kB)
+Collecting appscript>=1.1.0 (from docx2pdf>=0.1.8)
+  Using cached appscript-1.4.0-cp312-cp312-macosx_10_13_universal2.whl.metadata (529 bytes)
+Requirement already satisfied: tqdm>=4.41.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from docx2pdf>=0.1.8) (4.67.1)
+Requirement already satisfied: lxml>=4.7.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from appscript>=1.1.0->docx2pdf>=0.1.8) (5.3.2)
+Using cached docx2pdf-0.1.8-py3-none-any.whl (6.7 kB)
+Using cached appscript-1.4.0-cp312-cp312-macosx_10_13_universal2.whl (99 kB)
+Installing collected packages: appscript, docx2pdf
+
+Successfully installed appscript-1.4.0 docx2pdf-0.1.8
+Collecting markdown>=3.5.0
+  Using cached markdown-3.10.2-py3-none-any.whl.metadata (5.1 kB)
+Using cached markdown-3.10.2-py3-none-any.whl (108 kB)
+Installing collected packages: markdown
+Successfully installed markdown-3.10.2
+Requirement already satisfied: Pillow>=10.0.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (11.1.0)
+Requirement already satisfied: python-dotenv>=1.0.0 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (1.1.0)
+Collecting pytest>=8.0.0
+  Using cached pytest-9.0.2-py3-none-any.whl.metadata (7.6 kB)
+Collecting iniconfig>=1.0.1 (from pytest>=8.0.0)
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Requirement already satisfied: packaging>=22 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=8.0.0) (24.2)
+Collecting pluggy<2,>=1.5 (from pytest>=8.0.0)
+  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Requirement already satisfied: pygments>=2.7.2 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=8.0.0) (2.19.1)
+Using cached pytest-9.0.2-py3-none-any.whl (374 kB)
+Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Installing collected packages: pluggy, iniconfig, pytest
+
+Successfully installed iniconfig-2.3.0 pluggy-1.6.0 pytest-9.0.2
+Collecting pytest-cov>=4.1.0
+  Using cached pytest_cov-7.0.0-py3-none-any.whl.metadata (31 kB)
+Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov>=4.1.0)
+  Using cached coverage-7.13.4-cp312-cp312-macosx_11_0_arm64.whl.metadata (8.5 kB)
+Requirement already satisfied: pluggy>=1.2 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest-cov>=4.1.0) (1.6.0)
+Requirement already satisfied: pytest>=7 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest-cov>=4.1.0) (9.0.2)
+Requirement already satisfied: iniconfig>=1.0.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=7->pytest-cov>=4.1.0) (2.3.0)
+Requirement already satisfied: packaging>=22 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=7->pytest-cov>=4.1.0) (24.2)
+Requirement already satisfied: pygments>=2.7.2 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=7->pytest-cov>=4.1.0) (2.19.1)
+Using cached pytest_cov-7.0.0-py3-none-any.whl (22 kB)
+Using cached coverage-7.13.4-cp312-cp312-macosx_11_0_arm64.whl (219 kB)
+Installing collected packages: coverage, pytest-cov
+
+Successfully installed coverage-7.13.4 pytest-cov-7.0.0
+Collecting pytest-mock>=3.12.0
+  Using cached pytest_mock-3.15.1-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: pytest>=6.2.5 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest-mock>=3.12.0) (9.0.2)
+Requirement already satisfied: iniconfig>=1.0.1 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=6.2.5->pytest-mock>=3.12.0) (2.3.0)
+Requirement already satisfied: packaging>=22 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=6.2.5->pytest-mock>=3.12.0) (24.2)
+Requirement already satisfied: pluggy<2,>=1.5 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=6.2.5->pytest-mock>=3.12.0) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in /Users/sangnguyen/.pyenv/versions/3.12.6/lib/python3.12/site-packages (from pytest>=6.2.5->pytest-mock>=3.12.0) (2.19.1)
+Using cached pytest_mock-3.15.1-py3-none-any.whl (10 kB)
+Installing collected packages: pytest-mock
+Successfully installed pytest-mock-3.15.1

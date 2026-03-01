@@ -7,27 +7,50 @@ Use --output to write to a specific file instead.
 
 import argparse
 import sys
-import yaml
+try:
+    import yaml
+except ModuleNotFoundError:
+    raise SystemExit(
+        "PyYAML is required. Install with: python3 -m pip install -r .claude/scripts/requirements.txt"
+    )
 from pathlib import Path
 from datetime import datetime
 
 # Script directory for resolving relative paths
 SCRIPT_DIR = Path(__file__).parent
 
-# Ensure UTF-8 output on Windows
-if sys.platform == 'win32':
-    import io
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# Windows UTF-8 compatibility (use shared utility)
+try:
+    from win_compat import ensure_utf8_stdout
+    ensure_utf8_stdout()
+except ImportError:
+    if sys.platform == 'win32':
+        import io
+        if hasattr(sys.stdout, 'buffer'):
+            sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 def load_yaml(filename):
     """Load YAML file from script directory with helpful error handling."""
-    path = SCRIPT_DIR / filename
-    if not path.exists():
-        print(f"Error: {path} not found", file=sys.stderr)
+    primary = SCRIPT_DIR / filename
+
+    # skills_data canonical source moved under ck-help skill.
+    # SCRIPT_DIR is .claude/scripts/, parent is .claude/
+    if filename == 'skills_data.yaml':
+        canonical = SCRIPT_DIR.parent / 'skills' / 'ck-help' / 'scripts' / 'skills_data.yaml'
+        if canonical.exists():
+            loaded = yaml.safe_load(canonical.read_text(encoding='utf-8'))
+            return loaded if loaded is not None else []
+
+    if not primary.exists():
+        print(f"Error: {primary} not found", file=sys.stderr)
         print(f"Hint: Run scan_skills.py or scan_commands.py first to generate data files", file=sys.stderr)
         sys.exit(1)
-    return yaml.safe_load(path.read_text(encoding='utf-8'))
+
+    loaded = yaml.safe_load(primary.read_text(encoding='utf-8'))
+    if loaded is None:
+        return []
+    return loaded
 
 
 def generate_commands_yaml():
@@ -109,11 +132,22 @@ def generate_skills_yaml():
             'multimedia': 'Multimedia & Processing',
             'frameworks': 'Frameworks & Platforms',
             'utilities': 'Utilities & Helpers',
+            'core': 'Core Workflow',
+            'plan': 'Planning & Delivery',
+            'review': 'Code Review',
+            'test': 'Testing & QA',
+            'docs': 'Documentation',
+            'tools': 'Tooling',
+            'infra': 'Infrastructure',
+            'kanban': 'Kanban & Planning Board',
+            'worktree': 'Git Worktree',
+            'journal': 'Journaling',
+            'watzup': 'Session Wrap-up',
             'other': 'Other'
         },
         'legend': {
-            'has_scripts': '📦 Has executable scripts',
-            'has_references': '📚 Has reference documentation'
+            'has_scripts': 'Has executable scripts',
+            'has_references': 'Has reference documentation'
         },
         'skills': categories
     }
@@ -127,7 +161,7 @@ def write_output(content, output_path=None, label=None):
         path = Path(output_path)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding='utf-8')
-        print(f"✓ Generated {output_path}", file=sys.stderr)
+        print(f"Generated {output_path}", file=sys.stderr)
     else:
         print(content)
 

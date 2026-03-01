@@ -1,7 +1,8 @@
 ---
-name: docs-seeker
-description: "Search technical documentation using executable scripts to detect query type, fetch from llms.txt sources (context7.com), and analyze results. Use when user needs: (1) Topic-specific documentation (features/components/concepts), (2) Library/framework documentation, (3) GitHub repository analysis, (4) Documentation discovery with automated agent distribution strategy"
+name: ck:docs-seeker
+description: Search library/framework documentation via llms.txt (context7.com). Use for API docs, GitHub repository analysis, technical documentation lookup, latest library features.
 version: 3.1.0
+argument-hint: "[library-name] [topic]"
 ---
 
 # Documentation Discovery via Scripts
